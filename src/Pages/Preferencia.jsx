@@ -36,6 +36,15 @@ class Preferencia extends Component {
             type="button"
             onClick={ () => addPreferenceToStore(preference) }
             disabled={ preference === '' }
+            className={
+              `m-4
+              p-4
+              rounded-2xl
+              bg-indigo-200
+              transition hover:bg-indigo-300
+              mx-auto
+              `
+            }
           >
             Próxima
           </button>

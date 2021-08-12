@@ -11,17 +11,19 @@ import Manchete from './Pages/Manchete';
 class App extends Component {
   render() {
     return (
-      <Provider store={ store }>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={ Name } />
-          <Route exact path="/preferencia" component={ Preferencia } />
-          <Route exact path="/comida" component={ Comida } />
-          <Route exact path="/animal" component={ Animal } />
-          <Route exact path="/manchete" component={ Manchete } />
-        </Switch>
-      </BrowserRouter>
-    </Provider>
+      <main className="h-screen bg-indigo-100 flex justify-center items-center" >
+        <Provider store={ store }>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={ Name } />
+            <Route exact path="/preferencia" component={ Preferencia } />
+            <Route exact path="/comida" component={ Comida } />
+            <Route exact path="/animal" component={ Animal } />
+            <Route exact path="/manchete" component={ Manchete } />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
+      </main>
     );
   }
 }

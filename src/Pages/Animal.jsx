@@ -27,13 +27,28 @@ class Animal extends Component {
     const { addAnimalToStore } = this.props;
     return (
       <main>
-        <h1>Escolha um animal</h1>
+        <h1 className={
+          `font-mono
+          uppercase
+          text-center
+          text-2xl
+          m-6`}
+        >
+          Escolha um animal
+        </h1>
         <Select onChange = { this.handleChange } />
         <Link to="/manchete">
           <button
             type="button"
             onClick={ () => addAnimalToStore(animal) }
             disabled={ animal === '' }
+            className={
+              `m-4
+              p-4
+              rounded-2xl
+              bg-indigo-200
+              transition hover:bg-indigo-300`
+            }
           >
             Próxima
           </button>

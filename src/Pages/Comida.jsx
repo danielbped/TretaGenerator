@@ -27,12 +27,31 @@ class Comida extends Component {
     const { addFoodToStore } = this.props;
     return (
       <main>
-        <Buttons value={ food } onClick={ (e) => this.handleClick(e) }/>
+        <Buttons
+          value={ food }
+          onClick={ (e) => this.handleClick(e) }
+          className={`
+            bg-indigo-300
+            rounded-2xl
+            transition hover:bg-indigo-200
+            p-4
+            m-4
+          `}
+        />
         <Link to="/animal">
           <button
             type="button"
             onClick={ () => addFoodToStore(food) }
             disabled={ food === '' }
+            className={
+              `m-4
+              block
+              h-full
+              p-4
+              rounded-2xl
+              bg-indigo-200
+              transition hover:bg-indigo-300`
+            }
           >
             Próxima
           </button>
