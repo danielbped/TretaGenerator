@@ -6,7 +6,7 @@ class Radio extends Component {
     return (
       <div>
         <h1>{ label }</h1>
-        <label for="biscoito">
+        <label htmlFor="biscoito">
           Biscoito
         <input
           id="biscoito"
@@ -14,7 +14,7 @@ class Radio extends Component {
           type="radio"
         />
       </label>
-        <label for="bolacha">
+        <label htmlFor="bolacha">
           Bolacha
         <input
           id="bolacha"

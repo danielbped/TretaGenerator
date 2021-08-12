@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addName } from '../redux/actions'
 import Input from '../components/Input';
 
 class Name extends Component {
@@ -19,6 +21,7 @@ class Name extends Component {
 
   render() {
     const { name } = this.state;
+    const { addNameToStore } = this.props;
     return (
       <main>
         <h1>Digite um nome</h1>
@@ -29,7 +32,10 @@ class Name extends Component {
           onChange={ this.handleChange }
         />
         <Link to="/preferencia">
-          <button type="button">
+          <button
+          type="button"
+          onClick={ () => addNameToStore(name) }
+          >
             Próxima
           </button>
         </Link>
@@ -38,4 +44,8 @@ class Name extends Component {
   }
 }
 
-export default Name;
+const mapDispatchToProps = (dispatch) => ({
+  addNameToStore: (name) => dispatch(addName(name))
+})
+
+export default connect(null, mapDispatchToProps)(Name);

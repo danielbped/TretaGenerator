@@ -1,14 +1,37 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addFood } from '../redux/actions'
 import Buttons from '../components/Buttons';
 
-class Name extends Component {
+
+class Comida extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      food: ''
+    }
+  this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick({ target: { name, value } }) {
+    this.setState({
+      [name]: value,
+    })
+  }
+
   render() {
+    const { food } = this.state;
+    const { addFoodToStore } = this.props;
     return (
       <main>
-        <Buttons />
+        <Buttons value={ food } onClick={ (e) => this.handleClick(e) }/>
         <Link to="/animal">
-          <button type="button">
+          <button
+            type="button"
+            onClick={ () => addFoodToStore(food) }
+          >
             Próxima
           </button>
         </Link>
@@ -17,4 +40,8 @@ class Name extends Component {
   }
 }
 
-export default Name;
+const mapDispatchToProps = (dispatch) => ({
+  addFoodToStore: (food) => dispatch(addFood(food))
+})
+
+export default connect(null, mapDispatchToProps)(Comida);
