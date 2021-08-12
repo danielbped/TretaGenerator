@@ -8,7 +8,7 @@ class Manchete extends Component {
     const { name, animal, food, preference } = this.props;
     return(
       <main>
-        <h1>Extra! Extra!</h1>
+        <h1 className="w-56">Extra! Extra!</h1>
         <p>
           {`Em entrevista internacional, ${name} teve que debater sobre a discussão mais acirrada do século, é biscoito ou bolacha? 
           ${name} foi direto na canela dizendo que o certo é ${preference}!
@@ -17,7 +17,7 @@ class Manchete extends Component {
           {` e que nem seu ${animal} come!`}
         </p>
         <Link to="/">
-          <button type="button">
+          <button className="hover:bg-red-700" type="button">
             Voltar
           </button>
         </Link>
