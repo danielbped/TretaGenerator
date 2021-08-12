@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Radio extends Component {
   render() {
-    const { label } = this.props;
+    const { label, onChange } = this.props;
     return (
       <div>
         <h1>{ label }</h1>
@@ -10,16 +10,20 @@ class Radio extends Component {
           Biscoito
         <input
           id="biscoito"
-          name="preferencia"
+          name="preference"
+          value="biscoito"
           type="radio"
+          onChange={ onChange }
         />
       </label>
         <label htmlFor="bolacha">
           Bolacha
         <input
           id="bolacha"
-          name="preferencia"
+          name="preference"
+          value="bolacha"
           type="radio"
+          onChange={ onChange }
         />
       </label>
       </div>

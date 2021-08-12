@@ -8,7 +8,7 @@ class Buttons extends Component {
         <h1>Escolha o pior:</h1>
         <button 
           name="food"
-          value="Açaí"
+          value="açaí"
           type="button"
           onClick={ onClick }
         >
@@ -16,7 +16,7 @@ class Buttons extends Component {
         </button>
         <button 
           name="food"
-          value="Sushi"
+          value="sushi"
           type="button"
           onClick={ onClick }
         >
@@ -24,7 +24,7 @@ class Buttons extends Component {
         </button>
         <button 
           name="food"
-          value="Sopa"
+          value="sopa"
           type="button"
           onClick={ onClick }
         >
