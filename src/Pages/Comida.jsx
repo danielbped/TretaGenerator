@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addFood } from '../redux/actions'
@@ -31,6 +32,7 @@ class Comida extends Component {
           <button
             type="button"
             onClick={ () => addFoodToStore(food) }
+            disabled={ food === '' }
           >
             Próxima
           </button>
@@ -38,6 +40,10 @@ class Comida extends Component {
       </main>
     )
   }
+}
+
+Comida.propTypes = {
+  addFoodToStore: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = (dispatch) => ({

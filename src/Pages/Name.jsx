@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addName } from '../redux/actions'
@@ -35,6 +36,7 @@ class Name extends Component {
           <button
           type="button"
           onClick={ () => addNameToStore(name) }
+          disabled={ name === '' }
           >
             Próxima
           </button>
@@ -42,6 +44,10 @@ class Name extends Component {
       </main>
     )
   }
+}
+
+Name.propTypes = {
+  addNameToStore: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addPreference } from '../redux/actions';
@@ -34,6 +35,7 @@ class Preferencia extends Component {
           <button
             type="button"
             onClick={ () => addPreferenceToStore(preference) }
+            disabled={ preference === '' }
           >
             Próxima
           </button>
@@ -41,6 +43,10 @@ class Preferencia extends Component {
       </main>
     )
   }
+}
+
+Preferencia.propTypes = {
+  addPreferenceToStore: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = (dispatch) => ({
