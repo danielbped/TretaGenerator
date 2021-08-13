@@ -1,8 +1,8 @@
 # TretaGenerator
 
-### ~Exercício refatorado utilizando context API~
+### Exercício refatorado utilizando context API
 
-### Exercício desenvolvido para praticar o Redux.
+### ~Exercício desenvolvido para praticar o Redux.~
   - Framework utilizado: Tailwind CSS
 - [x] Crie 5 rotas, cada uma deve renderizar uma página
   - Crie as 5 páginas
