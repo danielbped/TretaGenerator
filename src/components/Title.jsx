@@ -9,7 +9,11 @@ class Title extends Component {
         uppercase
         text-center
         text-2xl
-        m-6`}
+        m-6
+        dark:text-white
+        transition
+        duration-1000
+        `}
       >
         { text }
       </h1>
