@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addName } from '../redux/actions'
 import Input from '../components/Input';
+import Title from '../components/Title'
+import ButtonNext from '../components/ButtonNext';
 
 class Name extends Component {
   constructor() {
@@ -25,43 +26,18 @@ class Name extends Component {
     const { addNameToStore } = this.props;
     return (
       <main>
-        <h1 
-          className={
-          `font-mono
-          uppercase
-          text-center
-          text-2xl
-          m-6`}
-        >
-          Digite um nome
-        </h1>
+        <Title text="Digite um nome" />
         <Input 
           name="name"
           placeholder="Nome"
           value = { name }
           onChange={ this.handleChange }
-          className={
-            `p-4
-            rounded-2xl
-            focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-transparent`
-          }
         />
-        <Link to="/preferencia">
-          <button
-          type="button"
+        <ButtonNext
+          link="/preferencia"
+          name={ name }
           onClick={ () => addNameToStore(name) }
-          disabled={ name === '' }
-          className={
-            `m-4
-            p-4
-            rounded-2xl
-            bg-indigo-200
-            transition hover:bg-indigo-300`
-          }
-          >
-            Próxima
-          </button>
-        </Link>
+        />
       </main>
     )
   }

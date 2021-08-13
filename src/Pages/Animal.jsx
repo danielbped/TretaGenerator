@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { addAnimal } from '../redux/actions'
+import ButtonNext from '../components/ButtonNext';
 import Select from '../components/Select'
+import Title from '../components/Title';
 
 class Animal extends Component {
   constructor() {
@@ -27,32 +28,13 @@ class Animal extends Component {
     const { addAnimalToStore } = this.props;
     return (
       <main>
-        <h1 className={
-          `font-mono
-          uppercase
-          text-center
-          text-2xl
-          m-6`}
-        >
-          Escolha um animal
-        </h1>
+        <Title text="Escolha um animal" />
         <Select onChange = { this.handleChange } />
-        <Link to="/manchete">
-          <button
-            type="button"
-            onClick={ () => addAnimalToStore(animal) }
-            disabled={ animal === '' }
-            className={
-              `m-4
-              p-4
-              rounded-2xl
-              bg-indigo-200
-              transition hover:bg-indigo-300`
-            }
-          >
-            Próxima
-          </button>
-        </Link>
+        <ButtonNext
+          name={ animal }
+          link="/manchete"
+          onClick={ () => addAnimalToStore(animal) }
+        />
       </main>
     )
   }

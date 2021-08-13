@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
+import Title from './Title'
 
 class Radio extends Component {
   render() {
     const { label, onChange } = this.props;
     return (
       <div className="text-center">
-        <h1 className={
-          `font-mono
-          uppercase
-          text-center
-          text-2xl
-          m-6`}
-        >
-          { label }
-        </h1>
+        <Title text={ label } />
         <label 
           htmlFor="biscoito"
           className="uppercase"
