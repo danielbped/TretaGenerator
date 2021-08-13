@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ButtonNext from '../components/ButtonNext';
 import Select from '../components/Select'
 import Title from '../components/Title';
-import MyContext from '../MyContext';
+import MyContext from '../context/MyContext';
 
 class Animal extends Component {
   constructor() {
@@ -23,22 +23,22 @@ class Animal extends Component {
 
   render() {
     const { animal } = this.state;
+    const { handleClick } = this.context;
+    
     return (
-      <MyContext.Consumer>
-        {({ handleClick }) => (
-          <main className="flex flex-col">
-            <Title text="Escolha um animal" />
-            <Select onChange = { this.handleChange } />
-            <ButtonNext
-              name={ animal }
-              link="/manchete"
-              onClick={ () => handleClick('animal', animal) }
-            />
-          </main>
-        )}
-      </MyContext.Consumer>
+      <main className="flex flex-col">
+        <Title text="Escolha um animal" />
+        <Select onChange = { this.handleChange } />
+        <ButtonNext
+          name={ animal }
+          link="/manchete"
+          onClick={ () => handleClick('animal', animal) }
+        />
+      </main>
     )
   }
 }
+
+Animal.contextType = MyContext;
 
 export default Animal;

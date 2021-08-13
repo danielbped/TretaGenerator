@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ButtonNext from '../components/ButtonNext';
 import Radio from '../components/Radio';
-import MyContext from '../MyContext';
+import MyContext from '../context/MyContext';
 
 class Preferencia extends Component {
   constructor() {
@@ -21,25 +21,25 @@ class Preferencia extends Component {
 
   render() {
     const { preference } = this.state;
+    const { handleClick } = this.context;
+    
     return (
-      <MyContext.Consumer>
-        {({ handleClick }) => (
-          <main className="flex flex-col">
-            <Radio
-              label="Escolha o certo:"
-              value={ preference }
-              onChange={ this.handleChange }
-            />
-            <ButtonNext
-              link="/comida"
-              onClick={ () => handleClick('preference', preference) }
-              name={ preference }
-            />
-          </main>
-        )}
-      </MyContext.Consumer>
+      <main className="flex flex-col">
+        <Radio
+          label="Escolha o certo:"
+          value={ preference }
+          onChange={ this.handleChange }
+        />
+        <ButtonNext
+          link="/comida"
+          onClick={ () => handleClick('preference', preference) }
+          name={ preference }
+        />
+      </main>
     )
   }
 }
+
+Preferencia.contextType = MyContext;
 
 export default Preferencia;

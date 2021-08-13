@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Buttons from '../components/Buttons';
 import Title from '../components/Title';
 import ButtonNext from '../components/ButtonNext';
-import MyContext from '../MyContext';
+import MyContext from '../context/MyContext';
 
 class Comida extends Component {
   constructor() {
@@ -22,25 +22,25 @@ class Comida extends Component {
 
   render() {
     const { food } = this.state;
+    const { handleClick } = this.context;
+    
     return (
-      <MyContext.Consumer>
-        {({ handleClick }) => (
-          <main className="flex flex-col">
-            <Title text="Escolha o pior:" />
-            <Buttons
-              value={ food }
-              onClick={ (e) => this.handleClick(e) }
-            />
-            <ButtonNext
-              name={food}
-              onClick = { () => handleClick('food', food) }
-              link="/animal"
-            />
-          </main>
-        )}
-      </MyContext.Consumer>
+      <main className="flex flex-col">
+        <Title text="Escolha o pior:" />
+        <Buttons
+          value={ food }
+          onClick={ (e) => this.handleClick(e) }
+        />
+        <ButtonNext
+          name={food}
+          onClick = { () => handleClick('food', food) }
+          link="/animal"
+        />
+      </main>
     )
   }
 }
+
+Comida.contextType = MyContext;
 
 export default Comida;
