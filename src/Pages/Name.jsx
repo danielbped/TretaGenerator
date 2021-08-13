@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from '../components/Input';
 import Title from '../components/Title'
 import ButtonNext from '../components/ButtonNext';
-import MyContext from '../MyContext';
+import MyContext from '../context/MyContext';
 
 class Name extends Component {
   constructor() {
@@ -21,9 +21,9 @@ class Name extends Component {
 
   render() {
     const { name } = this.state;
+    const { handleClick } = this.context;
+    
     return (
-    <MyContext.Consumer>
-      {({ handleClick }) => (
         <main className="flex flex-col">
           <Title text="Digite um nome" />
           <Input 
@@ -38,10 +38,10 @@ class Name extends Component {
             onClick={ () => handleClick('name', name) }
             />
         </main>
-      )}
-    </MyContext.Consumer>
     )
   }
 }
+
+Name.contextType = MyContext;
 
 export default Name;
