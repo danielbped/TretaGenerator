@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addPreference } from '../redux/actions';
 import ButtonNext from '../components/ButtonNext';
 import Radio from '../components/Radio';
+import MyContext from '../MyContext';
 
 class Preferencia extends Component {
   constructor() {
@@ -23,30 +21,25 @@ class Preferencia extends Component {
 
   render() {
     const { preference } = this.state;
-    const { addPreferenceToStore } = this.props;
     return (
-      <main className="flex flex-col">
-        <Radio
-          label="Escolha o certo:"
-          value={ preference }
-          onChange={ this.handleChange }
-        />
-        <ButtonNext
-          link="/comida"
-          onClick={ () => addPreferenceToStore(preference) }
-          name={ preference }
-        />
-      </main>
+      <MyContext.Consumer>
+        {({ handleClick }) => (
+          <main className="flex flex-col">
+            <Radio
+              label="Escolha o certo:"
+              value={ preference }
+              onChange={ this.handleChange }
+            />
+            <ButtonNext
+              link="/comida"
+              onClick={ () => handleClick('preference', preference) }
+              name={ preference }
+            />
+          </main>
+        )}
+      </MyContext.Consumer>
     )
   }
 }
 
-Preferencia.propTypes = {
-  addPreferenceToStore: PropTypes.func.isRequired,
-}
-
-const mapDispatchToProps = (dispatch) => ({
-  addPreferenceToStore: (preference) => dispatch(addPreference(preference)),
-})
-
-export default connect(null, mapDispatchToProps)(Preferencia);
+export default Preferencia;
