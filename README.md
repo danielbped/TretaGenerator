@@ -1,6 +1,6 @@
 # TretaGenerator
 
-### Exercício refatorado utilizando context API
+### ~Exercício refatorado utilizando context API~
 
 ### Exercício desenvolvido para praticar o Redux.
   - Framework utilizado: Tailwind CSS
