@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux'
-import store from './redux/store/'
+import MyContext from './MyContext';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Name from './Pages/Name';
 import Preferencia from './Pages/Preferencia';
@@ -9,10 +8,36 @@ import Animal from './Pages/Animal';
 import Manchete from './Pages/Manchete';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      animal: '',
+      food: '',
+      name: '',
+      preference: '',
+    }
+  this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(name, value) {
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
+    const { animal, food, name, preference } = this.state;
+    const context = {
+      animal,
+      food,
+      name,
+      preference,
+      handleClick: this.handleClick,
+    }
     return (
       <main className="h-screen bg-indigo-100 flex justify-center items-center" >
-        <Provider store={ store }>
+        <MyContext.Provider value={ context }>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={ Name } />
@@ -22,7 +47,7 @@ class App extends Component {
             <Route exact path="/manchete" component={ Manchete } />
           </Switch>
         </BrowserRouter>
-      </Provider>
+      </MyContext.Provider>
       </main>
     );
   }

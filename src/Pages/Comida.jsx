@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addFood } from '../redux/actions'
 import Buttons from '../components/Buttons';
 import Title from '../components/Title';
 import ButtonNext from '../components/ButtonNext';
+import MyContext from '../MyContext';
 
 class Comida extends Component {
   constructor() {
@@ -24,30 +22,25 @@ class Comida extends Component {
 
   render() {
     const { food } = this.state;
-    const { addFoodToStore } = this.props;
     return (
-      <main className="flex flex-col">
-          <Title text="Escolha o pior:" />
-          <Buttons
-            value={ food }
-            onClick={ (e) => this.handleClick(e) }
-          />
-          <ButtonNext
-            name={food}
-            onClick = {() => addFoodToStore(food)}
-            link="/animal"
-          />
-      </main>
+      <MyContext.Consumer>
+        {({ handleClick }) => (
+          <main className="flex flex-col">
+            <Title text="Escolha o pior:" />
+            <Buttons
+              value={ food }
+              onClick={ (e) => this.handleClick(e) }
+            />
+            <ButtonNext
+              name={food}
+              onClick = { () => handleClick('food', food) }
+              link="/animal"
+            />
+          </main>
+        )}
+      </MyContext.Consumer>
     )
   }
 }
 
-Comida.propTypes = {
-  addFoodToStore: PropTypes.func.isRequired,
-}
-
-const mapDispatchToProps = (dispatch) => ({
-  addFoodToStore: (food) => dispatch(addFood(food))
-})
-
-export default connect(null, mapDispatchToProps)(Comida);
+export default Comida;

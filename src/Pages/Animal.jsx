@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addAnimal } from '../redux/actions'
 import ButtonNext from '../components/ButtonNext';
 import Select from '../components/Select'
 import Title from '../components/Title';
+import MyContext from '../MyContext';
 
 class Animal extends Component {
   constructor() {
@@ -25,27 +23,22 @@ class Animal extends Component {
 
   render() {
     const { animal } = this.state;
-    const { addAnimalToStore } = this.props;
     return (
-      <main className="flex flex-col">
-        <Title text="Escolha um animal" />
-        <Select onChange = { this.handleChange } />
-        <ButtonNext
-          name={ animal }
-          link="/manchete"
-          onClick={ () => addAnimalToStore(animal) }
-        />
-      </main>
+      <MyContext.Consumer>
+        {({ handleClick }) => (
+          <main className="flex flex-col">
+            <Title text="Escolha um animal" />
+            <Select onChange = { this.handleChange } />
+            <ButtonNext
+              name={ animal }
+              link="/manchete"
+              onClick={ () => handleClick('animal', animal) }
+            />
+          </main>
+        )}
+      </MyContext.Consumer>
     )
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addAnimalToStore: (animal) => dispatch(addAnimal(animal))
-})
-
-Animal.propTypes = {
-  addAnimalToStore: PropTypes.func.isRequired,
-}
-
-export default connect(null, mapDispatchToProps)(Animal);
+export default Animal;
