@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addFood } from '../redux/actions'
 import Buttons from '../components/Buttons';
+import Title from '../components/Title';
 import ButtonNext from '../components/ButtonNext';
 
 class Comida extends Component {
@@ -15,7 +16,7 @@ class Comida extends Component {
   this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick({ target: { name, value } }) {
+  handleClick({ target: { name, value, className } }) {
     this.setState({
       [name]: value,
     })
@@ -26,15 +27,16 @@ class Comida extends Component {
     const { addFoodToStore } = this.props;
     return (
       <main className="flex flex-col">
-        <Buttons
-          value={ food }
-          onClick={ (e) => this.handleClick(e) }
-        />
-        <ButtonNext
-          name={food}
-          onClick = {() => addFoodToStore(food)}
-          link="/animal"
-        />
+          <Title text="Escolha o pior:" />
+          <Buttons
+            value={ food }
+            onClick={ (e) => this.handleClick(e) }
+          />
+          <ButtonNext
+            name={food}
+            onClick = {() => addFoodToStore(food)}
+            link="/animal"
+          />
       </main>
     )
   }

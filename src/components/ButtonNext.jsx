@@ -5,15 +5,13 @@ class ButtonNext extends Component {
   render() {
     const { link, onClick, name } = this.props;
     return (
-      <Link to={ link }>
+      <Link to={ link } className="block mx-auto">
         <button
             type="button"
             onClick={ onClick }
             disabled={ name === '' }
             className={
-              `
-              block
-              bg-indigo-200
+              `bg-indigo-200
               m-4
               p-4
               rounded-2xl

@@ -27,7 +27,7 @@ class Animal extends Component {
     const { animal } = this.state;
     const { addAnimalToStore } = this.props;
     return (
-      <main>
+      <main className="flex flex-col">
         <Title text="Escolha um animal" />
         <Select onChange = { this.handleChange } />
         <ButtonNext

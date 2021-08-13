@@ -27,7 +27,8 @@ class Preferencia extends Component {
     return (
       <main className="flex flex-col">
         <Radio
-          label="Escolha o certo:" 
+          label="Escolha o certo:"
+          value={ preference }
           onChange={ this.handleChange }
         />
         <ButtonNext

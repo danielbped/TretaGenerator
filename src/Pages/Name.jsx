@@ -25,7 +25,7 @@ class Name extends Component {
     const { name } = this.state;
     const { addNameToStore } = this.props;
     return (
-      <main>
+      <main className="flex flex-col">
         <Title text="Digite um nome" />
         <Input 
           name="name"

@@ -1,32 +1,50 @@
 import React, { Component } from 'react';
-import Title from './Title';
-
 class Buttons extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      active: false,
+    }
+  this.toggleClass = this.toggleClass.bind(this);
+  }
+
+  toggleClass(e) {
+    const { onClick } = this.props;
+    const { active } = this.state;
+    if (!active) {
+      this.setState({ active: true })
+      e.target.className = e.target.className + "border border-indigo-500";
+      onClick(e);
+    }
+  }
+
   render() {
-    const { onClick, className } = this.props;
     const options = ["Açaí", "Sushi", "Sopa"];
     return(
-      <div>
-        <Title text="Escolha o pior:" />
-        <div className="h-20 flex flex-col">
+        <div>
           {options.map((option) => <button
             key= { option }
             name="food"
             value={ option.toLowerCase() }
             type="button"
-            onClick={ onClick }
-            className={`
-            bg-indigo-300
+            onClick={ (e) => this.toggleClass(e) }
+            className={
+            `bg-indigo-300
+            block
+            mx-auto
+            container
             rounded-2xl
             transition hover:bg-indigo-200
             p-4
-            m-4
+            my-4
+            border-transparent
           `}
           >
             {option}
-          </button>)}
+          </button>
+        )}
         </div>
-      </div>
     )
   }
 }

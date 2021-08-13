@@ -18,7 +18,7 @@ class Radio extends Component {
           value="biscoito"
           type="radio"
           onChange={ onChange }
-          className="mr-4"
+          className="mr-4 ml-2"
         />
       </label>
         <label 
@@ -32,7 +32,7 @@ class Radio extends Component {
           value="bolacha"
           type="radio"
           onChange={ onChange }
-          className="mr-4"
+          className="mr-4  ml-2"
         />
       </label>
       </div>
