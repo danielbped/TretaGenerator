@@ -1,8 +1,6 @@
 # TretaGenerator
 
-### Exercício refatorado utilizando context API
-
-### ~Exercício desenvolvido para praticar o Redux.~
+### Exercício desenvolvido para praticar o Redux.
   - Framework utilizado: Tailwind CSS
 - [x] Crie 5 rotas, cada uma deve renderizar uma página
   - Crie as 5 páginas
@@ -24,3 +22,6 @@
 - [x] Crie um texto dinâmico caso a opção escolhida na etapa 3 seja "Sopa"
   - Caso a opção escolhida seja "Sopa", o texto renderizado deve ser "sopa não é janta":
   "Em entrevista internacional, Leticia teve que debater sobre a discussão mais acirrada do século, é biscoito ou bolacha? Leticia foi direto na canela dizendo que o certo é bolacha! E ainda complementou que sopa não é janta e que nem seu gato come!"
+  
+  ### Exercício refatorado utilizando context API
+    - [x] Adiciona modo escuro
