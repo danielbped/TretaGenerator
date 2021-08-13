@@ -9,7 +9,11 @@ class Radio extends Component {
         <Title text={ label } />
         <label 
           htmlFor="biscoito"
-          className="uppercase"
+          className="
+          uppercase
+          dark:text-white
+          transition
+          duration-1000"
         >
           Biscoito
         <input
@@ -23,7 +27,11 @@ class Radio extends Component {
       </label>
         <label 
           htmlFor="bolacha"
-          className="uppercase"
+          className="
+          uppercase
+          dark:text-white
+          transition
+          duration-1000"
         >
           Bolacha
         <input

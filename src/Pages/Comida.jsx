@@ -14,7 +14,7 @@ class Comida extends Component {
   this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick({ target: { name, value, className } }) {
+  handleClick({ target: { name, value } }) {
     this.setState({
       [name]: value,
     })
