@@ -25,3 +25,5 @@
   
   ### Exercício refatorado utilizando context API
     - [x] Adiciona modo escuro
+
+  ### Exercício refatorado utilizando hooks
