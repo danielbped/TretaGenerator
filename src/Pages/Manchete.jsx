@@ -4,7 +4,7 @@ import MyContext from '../context/MyContext';
 import { Redirect } from 'react-router-dom';
 
 function Manchete() {
-  const { name, animal, food, preference } = useContext(MyContext);
+  const { state: {name, animal, food, preference} } = useContext(MyContext);
   if (name === '' || animal === '' || food === '' || preference === '') return <Redirect to='/' />
   return (
     <main className="w-1/2">

@@ -1,41 +1,26 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import MyContext from './MyContext';
 
-class Provider extends Component {
-  constructor() {
-    super();
+function Provider(props) {
+  const [state, setState] = useState({
+    animal: '',
+    food: '',
+    name: '',
+    preference: '',
+  });
 
-    this.state = {
-      animal: '',
-      food: '',
-      name: '',
-      preference: '',
-    }
-  this.handleClick = this.handleClick.bind(this);
+  const handleClick = (name, value) => {
+    const newState = {...state, [name]: value};
+    setState(newState);
   }
 
-  handleClick(name, value) {
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  render () {
-    const { animal, food, name, preference } = this.state;
-    const { children } = this.props;
-    const context = {
-      animal,
-      food,
-      name,
-      preference,
-      handleClick: this.handleClick,
-    }
-    return (
-      <MyContext.Provider value={ context }>
-          { children }
-      </MyContext.Provider>
-    )
-  }
+  const { children } = props;
+  const context = {state, handleClick}
+  return (
+    <MyContext.Provider value={ context }>
+        { children }
+    </MyContext.Provider>
+  )
 }
 
 export default Provider;
