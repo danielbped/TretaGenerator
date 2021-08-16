@@ -1,5 +1,10 @@
 import { createContext } from 'react';
 
-const MyContext = createContext();
+const MyContext = createContext({
+  animal: '',
+  food: '',
+  name: '',
+  preference: '',
+});
 
 export default MyContext;
