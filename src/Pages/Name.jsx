@@ -1,47 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState, useContext} from 'react';
 import Input from '../components/Input';
 import Title from '../components/Title'
 import ButtonNext from '../components/ButtonNext';
 import MyContext from '../context/MyContext';
 
-class Name extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      name: '',
-    }
-
-  this.handleChange = this.handleChange.bind(this);
+function Name() {
+  const [ name, setName ] = useState('');
+  const { handleClick } = useContext(MyContext);
+  const handleChange = ({ target: { value } }) => {
+    setName(value)
   }
-
-  handleChange({ target: {name, value} }) {
-    this.setState({[name]: value})
-  }
-
-  render() {
-    const { name } = this.state;
-    const { handleClick } = this.context;
-    
-    return (
-        <main className="flex flex-col">
-          <Title text="Digite um nome" />
-          <Input 
-            name="name"
-            placeholder="Nome"
-            value = { name }
-            onChange={ this.handleChange }
-            />
-          <ButtonNext
-            link="/preferencia"
-            name={ name }
-            onClick={ () => handleClick('name', name) }
-            />
-        </main>
-    )
-  }
+  
+  return (
+    <main className="flex flex-col">
+      <Title text="Digite um nome" />
+      <Input 
+        name="name"
+        placeholder="Nome"
+        value = { name }
+        onChange={ handleChange }
+        />
+      <ButtonNext
+        link="/preferencia"
+        name={ name }
+        onClick={ () => handleClick('name', name) }
+        />
+    </main>
+  )
 }
-
-Name.contextType = MyContext;
 
 export default Name;

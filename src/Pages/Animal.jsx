@@ -6,7 +6,7 @@ import MyContext from '../context/MyContext';
 
 function Animal() {
   
-  const [animal, setAnimal] = useState('');
+  const [animal, setAnimal] = useState('Gato');
   const { handleClick } = useContext(MyContext)
 
   const handleChange = ({ target: { value } }) => {
