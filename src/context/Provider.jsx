@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MyContext from './MyContext';
 
-function Provider(props) {
+function Provider({ children }) {
   const [state, setState] = useState({
     animal: '',
     food: '',
@@ -14,10 +14,8 @@ function Provider(props) {
     setState(newState);
   }
 
-  const { children } = props;
-  const context = {state, handleClick}
   return (
-    <MyContext.Provider value={ context }>
+    <MyContext.Provider value={ {state, handleClick} }>
         { children }
     </MyContext.Provider>
   )
